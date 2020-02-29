@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Zeke</title>
+    <link rel="stylesheet" href="../styles/type.css"></link>
+    <link rel="stylesheet" href="../styles/position.css"></link>
+    <!-- Favicon is GitHub profile image. -->
+    <link rel="icon" href="https://avatars1.githubusercontent.com/u/30676292?s=180&v=4">
+</head>
+
+<body>
+    <div class="col">
+
+        <h1>The Robot That Could</h1>
+        <h3>&mdash; One weekend, <b>one mission.</b></h3>
+
+        <p>
+            The robot that could was conceptualized two days before its final
+            presentation, built the day before, and perfected the day of.
+            Despite this, it completed the final course for Berkeley's DESINV 22
+            class admirably. Its durrable construction meant that desipte being
+            run over and pushed off a ramp by larger robots, it was able to
+            complete the course quickly and while remaining intact.
+
+	    This project would not have been possible without the
+	    incredible design work for my partner Sarah Katz.
+        </p>
+
+        <h2>
+            <img class="med-img" src="../media/robot.png"/>
+        </h2>
+
+        <h2>
+            Features.
+        </h2>
+        <ul>
+            <li>
+                Magnetically attached front for easy access to to internals.
+            </li>
+            <li>
+                Internal LEDs that pulse to communicate the power at each motor.
+            </li>
+            <li>
+                Striking, simple, attractive design.
+            </li>
+            <li>
+                Easy to use Bluetooth controls.
+            </li>
+        </ul>
+	<h2>
+	  Process.
+	</h2>
+	<p>
+	  We began designing Purple Rain with a MDF wood chassis
+	  prototype on the laser cutter, and a simple motor control
+	  system to prototype our gearing. The DC motors powering the
+	  robot don’t have much torque, so we took steps in our design
+	  to gear down the motors, and to make the chassis as
+	  lightweight as possible. To reduce weight in the chassis, we
+	  used the same honeycomb structure previously used in our
+	  quad-copter chassis design, and made the robot triangular,
+	  rather than square. The initial prototype also featured a
+	  cloth hinge to allow for access to its internals.
+	</p>
+	<div class="image_row">
+	  <img class="med-img" src="../media/robot.png"/>
+	  <img class="med-img" src="../media/robot.png"/>
+	  <img class="med-img" src="../media/robot.png"/>
+	</div>
+    </div>
+</body>

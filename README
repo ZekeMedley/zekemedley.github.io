@@ -1,3 +1,11 @@
-This is a WIP version of my public website. I have decided to make my
-own rather than using the Adobe Portfolio one because I think that I
-can do better making my own and Adobe Portfolio doesn't have code blocks.
+
+This is my personal website. In addition, I'd like to include a simple
+markdown to html generator that I can use for my own purposes. This
+generator should support the following:
+
+* Headers size 1 to 3
+* Paragraphs
+* Unordered lists
+* Links to external pages
+* Links to internal pages
+* Showing internal images
