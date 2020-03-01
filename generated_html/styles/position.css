@@ -6,9 +6,9 @@ body { margin: 0% 0%; width: 100%; background-color: white }
 
 .med-img
 {
-    display: block;
+/*    display: block;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; */
     width: 80%;
     margin-top: 1.5rem;
 }
