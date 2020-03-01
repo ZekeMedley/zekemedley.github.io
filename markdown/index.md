@@ -7,5 +7,3 @@ interest in programming languages and secure, fast code.
 
 I've collected some of my work here.
 
-Also, all of this work is made from ideas that I took from
-[Annalise Kamegawa](https://www.github.io/akamegawa98).
