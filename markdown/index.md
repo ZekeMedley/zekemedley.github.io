@@ -1,5 +1,5 @@
 # Zeke Medley
-### — Software, Designer. Student.
+### — Software. Designer. Student.
 
 Hi. Welcome to my website. I'm Zeke. I'm studying Electrical
 Engineering and Computer Sciences at UC Berkeley with a particular
@@ -31,4 +31,4 @@ sets. Used in the Zeek Network Security Monitor.
 
 [![Panotech](media/panotech.jpg)](panotech.html)
 ### [Panotech](panotech.html)
-→ A critique of public surveillance and art insallation.
+→ A critique of public surveillance and art installation.
