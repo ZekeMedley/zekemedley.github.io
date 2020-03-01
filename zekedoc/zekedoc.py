@@ -19,6 +19,9 @@ header = '''
 footer = '''
 <br>
 <br>
+<a href="index.html">[back home]</a>
+<br>
+<br>
 </body>
 </html>
 '''
