@@ -1,6 +1,6 @@
 import mistletoe
 import sys
-from renderer import ZekeRenderer
+from zekedoc.renderer import ZekeRenderer
 
 header = '''
 <!DOCTYPE html>
@@ -24,6 +24,6 @@ footer = '''
 '''
 
 def render_file(f):
-    return mistletoe.markdown(sys.stdin, ZekeRenderer)
+    return header + mistletoe.markdown(f, ZekeRenderer) + footer
 
 
