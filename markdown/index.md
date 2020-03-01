@@ -12,14 +12,14 @@ I've collected some of my work here.
 → Generates audio visualizations from sound files in the style of the
 Unknown Pleasures album cover.
 
-[![Alternative Crayola](media/skull.jpg)](alternative-crayola.html)
-### [Alternative Crayola](alternative-crayola.html)
-→ A Crayola monkey skull and drawing machine.
-
 [![Paraglob](media/paraglob.png)](https://github.com/zeek/paraglob)
 ### [Paraglob](https://github.com/zeek/paraglob)
 → Data structure for fast string matching against large pattern
 sets. Used in the Zeek Network Security Monitor.
+
+[![Alternative Crayola](media/skull.jpg)](alternative-crayola.html)
+### [Alternative Crayola](alternative-crayola.html)
+→ A Crayola monkey skull and drawing machine.
 
 [![Arm](media/arm.png)](drone-chassis.html)
 ### [Generative Design x Drone Chassis](drone-chassis.html)
@@ -32,3 +32,8 @@ sets. Used in the Zeek Network Security Monitor.
 [![Panotech](media/panotech.jpg)](panotech.html)
 ### [Panotech](panotech.html)
 → A critique of public surveillance and art installation.
+
+![Me](media/headshot.JPG)
+### [Linkedin](https://www.linkedin.com/in/zeke-medley-b1261a173/), [GitHub](https://github.com/ZekeMedley/)
+
+
