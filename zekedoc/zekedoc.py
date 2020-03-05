@@ -13,13 +13,20 @@ header = '''
 <link rel="icon" href="https://avatars1.githubusercontent.com/u/30676292?s=180&v=4">
 </head>
 <body>
-<nav>
-<a href="index.html" style="font-size: 1.414rem;font-weight: bolder;">ZM</a>
-</nav>
 <div class="wrapper">
+    <nav>
+      <a href="index.html"><img src="media/logo6.svg" alt="ZM Logo"></a>
+      <ul>
+          <li><a href="https://www.linkedin.com/in/zeke-medley-b1261a173/">Linkedin</a></li>
+          <li><a href="https://github.com/ZekeMedley">GitHub</a></li>
+          <li><a href="interesting-things.html">Interesting</a></li>
+      </ul>
+    </nav>
+<section id="main">
 '''
 
 footer = '''
+</section>
 </div>
 </body>
 </html>
