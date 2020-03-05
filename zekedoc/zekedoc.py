@@ -13,20 +13,20 @@ header = '''
 <link rel="icon" href="https://avatars1.githubusercontent.com/u/30676292?s=180&v=4">
 </head>
 <body>
-<div class="col">
+<nav>
+<a href="index.html" style="font-size: 1.414rem;font-weight: bolder;">ZM</a>
+</nav>
+<div class="wrapper">
 '''
 
 footer = '''
 <br>
 <br>
 <a href="index.html">[back home]</a>
-<br>
-<br>
+</div>
 </body>
 </html>
 '''
 
 def render_file(f):
     return header + mistletoe.markdown(f, ZekeRenderer) + footer
-
-

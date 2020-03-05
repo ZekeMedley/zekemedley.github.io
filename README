@@ -1,11 +1,6 @@
 
-This is my personal website. In addition, I'd like to include a simple
-markdown to html generator that I can use for my own purposes. This
-generator should support the following:
-
-* Headers size 1 to 3
-* Paragraphs
-* Unordered lists
-* Links to external pages
-* Links to internal pages
-* Showing internal images
+This is my personal website. As much as possible, it is generated from
+markdown files. This is because I am too lazy to write things in HTML
+my self. Much of the styling of this website is based on the MNT
+Reaserch website which I think is really nice. You can find it here:
+https://mntre.com/
