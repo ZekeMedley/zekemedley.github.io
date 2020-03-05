@@ -20,9 +20,6 @@ header = '''
 '''
 
 footer = '''
-<br>
-<br>
-<a href="index.html">[back home]</a>
 </div>
 </body>
 </html>
