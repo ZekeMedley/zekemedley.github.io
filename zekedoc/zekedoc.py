@@ -15,7 +15,7 @@ header = '''
 <body>
 <div class="wrapper">
     <nav>
-      <a href="index.html"><img src="media/logo6.svg" alt="ZM Logo"></a>
+      <a href="index.html"><img src="media/logo.gif" alt="ZM Logo"></a>
       <ul>
           <li><a href="https://www.linkedin.com/in/zeke-medley-b1261a173/">Linkedin</a></li>
           <li><a href="https://github.com/ZekeMedley">GitHub</a></li>
