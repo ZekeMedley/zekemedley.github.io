@@ -39,6 +39,7 @@ for path in files:
     # make the directory if it doesnt exist
     pathlib.Path(output_path.parents[0]).mkdir(parents=True, exist_ok=True)
     output_path.write_text(output)
+    output_path.rename(output_path.with_suffix('.md.html'))
     
     # copy over styles into new dir
     copy_tree("styles", results.output_dir + "/styles")
