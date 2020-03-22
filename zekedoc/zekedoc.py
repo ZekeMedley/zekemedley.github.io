@@ -6,7 +6,7 @@ header = '''
 <!DOCTYPE html>
 <head>
 <meta charset='UTF-8'>
-<title>Zeke</title>
+<title>Zeke Medley</title>
 <link rel="stylesheet" href="styles/type.css"></link>
 <link rel="stylesheet" href="styles/position.css"></link>
 <link href="styles/prism.css" rel="stylesheet" />

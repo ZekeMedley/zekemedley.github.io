@@ -1,7 +1,7 @@
 # Zeke Medley
 ### — Creative Work.
 
-Hi. Welcome to my website. I'm Zeke. I'm studying Electrical
+Hi. Welcome to my website. I'm Zeke Medley. I'm studying Electrical
 Engineering and Computer Sciences at UC Berkeley with a particular
 interest in programming languages and secure, fast code.
 
