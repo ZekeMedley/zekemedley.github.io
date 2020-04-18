@@ -3,11 +3,6 @@
 
 Some things that I find interesting. Really just notes at this point.
 
-### 🧮 [Discrete Time Periodicity](dt-periodicity.md)
-
-A small write up about the weirdness of periodicity when we leave
-continuous time.
-
 ### 📹 Face Recognition
 
 * The Boston Marathon is a good example of law enforcement

@@ -1,37 +1,9 @@
 # Zeke Medley
-### — Creative Work.
+### — Software Engineer.
 
-Hi. Welcome to my website. I'm Zeke Medley. I'm studying Electrical
+Hi. Welcome to my website. I'm Zeke. I'm studying Electrical
 Engineering and Computer Sciences at UC Berkeley with a particular
 interest in programming languages and secure, fast code.
-
-I've collected some of my work here.
-
-[![Unknown Pleasures](media/unknownpleasures.gif)](https://github.com/ZekeMedley/joy-divisions-cover-generation)
-### [Joy Division Cover Generation](https://github.com/ZekeMedley/joy-divisions-cover-generation)
-→ Generates audio visualizations from sound files in the style of the
-Unknown Pleasures album cover.
-
-[![Paraglob](media/paraglob.png)](https://github.com/zeek/paraglob)
-### [Paraglob](https://github.com/zeek/paraglob)
-→ Data structure for fast string matching against large pattern
-sets. Used in the Zeek Network Security Monitor.
-
-[![Alternative Crayola](media/skull.jpg)](alternative-crayola.md)
-### [Alternative Crayola](alternative-crayola.md)
-→ A Crayola monkey skull and drawing machine.
-
-[![Arm](media/arm.png)](drone-chassis.md)
-### [Generative Design x Drone Chassis](drone-chassis.md)
-→ Drone chassis created with Fusion 360's generative design tools.
-
-[![Where Is Your Internet?](media/whereisyourinternet.jpg)](https://github.com/ZekeMedley/Where-Is-Your-Internet-IRL)
-### [Where Is Your Internet IRL](https://github.com/ZekeMedley/Where-Is-Your-Internet-IRL)
-→ Records and plots the physical location of your internet traffic.
-
-[![Panotech](media/panotech.jpg)](panotech.md)
-### [Panotech](panotech.md)
-→ A critique of public surveillance and art installation.
 
 ![Me](media/headshot.JPG)
 ### [Linkedin](https://www.linkedin.com/in/zeke-medley-b1261a173/), [GitHub](https://github.com/ZekeMedley/)

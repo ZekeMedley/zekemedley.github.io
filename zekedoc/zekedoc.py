@@ -16,11 +16,10 @@ header = '''
 <body>
 <div class="wrapper">
     <nav>
-      <a href="index.md"><img src="media/logo.gif" alt="ZM Logo"></a>
+      <a href="index.md.html"><img src="media/logo.gif" alt="ZM Logo"></a>
       <ul>
-          <li><a href="https://www.linkedin.com/in/zeke-medley-b1261a173/">Linkedin</a></li>
-          <li><a href="https://github.com/ZekeMedley">GitHub</a></li>
-          <li><a href="interesting-things.md">Interesting</a></li>
+          <li><a href="writing.md.html">Writing</a></li>
+          <li><a href="work.md.html">Work</a></li>
       </ul>
     </nav>
 <section id="main">
