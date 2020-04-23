@@ -40,8 +40,18 @@ variable as we're now in discrete time). Working this out, we arrive
 at a familiar formula: `p = 2πk/w`, but in our `sin(n)` function
 `w = 1`!
 
-Something is wrong, our period is now an irrational number. What this
-means is that in discrete time, our friend `sin(n)` is no longer a
-periodic function.
+Something is different, our period is now an irrational number. In
+continuous time this wasn't a problem because we can represent
+irrational numbers the same way that we would anything else, but in
+discrete time where `x` can only take on integer values there is no
+way to represent an irrational `x` value. This means that in discrete
+time you can only have integer periods.
+
+Another way to think about this is that even if the signal is
+periodic, if this period never lands on one of our discrete time
+samples, then it is no longer periodic in discrete time. In our
+example the `sin(wx)` is periodic with period `2πk/w` in continuous
+time but because there is no integer `k` such that`2πk` is also an
+integer, in discrete time this function is no longer periodic.
 
 I thought this was quite interesting.
