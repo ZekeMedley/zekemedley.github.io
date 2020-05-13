@@ -7,4 +7,4 @@ and put them together mostly because I enjoy the process.
 ### 🌳 [Interesting Things](interesting-things.md.html)
 ### 🧮 [Discrete Time Periodicity](dt-periodicity.md.html)
 ### 🖥️  [Notes on Zeek's Closures](closure-notes.md.html)
-### 🐁 [Aesop's Fable](static/aesop.html)
+### 🌐 [Little Webpages I've Put Together](webpages.md.html)
