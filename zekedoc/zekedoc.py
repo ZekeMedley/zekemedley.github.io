@@ -18,7 +18,7 @@ header = '''
     <nav>
       <a href="index.md.html"><img src="media/logo.gif" alt="ZM Logo"></a>
       <ul>
-          <li><a href="writing.md.html">Writing</a></li>
+          <li><a href="writing.md">Writing</a></li>
           <li><a href="work.md.html">Work</a></li>
       </ul>
     </nav>
