@@ -44,3 +44,5 @@ for path in files:
     # copy over styles into new dir
     copy_tree("styles", results.output_dir + "/styles")
     copy_tree("media", results.output_dir + "/media")
+    copy_tree("js", results.output_dir + "/js")
+    copy_tree("static", results.output_dir + "/static")
