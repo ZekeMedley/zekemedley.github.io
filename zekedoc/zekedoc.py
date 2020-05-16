@@ -4,6 +4,7 @@ from zekedoc.renderer import ZekeRenderer
 
 header = '''
 <!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset='UTF-8'>
 <title>Zeke Medley</title>
