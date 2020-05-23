@@ -1,4 +1,4 @@
-# Websites
+# Webpages
 
 While I've got some free time here between school ending and starting
 work on Firefox I thought it might be fun to try to make a website a
@@ -16,3 +16,9 @@ crisp edges, nice shine, and good colors.
 ### 👀 [Screen Reader Preferred](static/reader.html)
 A website best read with a screen reader about writing websites that
 are screen reader compatible.
+####  	🌊 [Masking Text & CSS Animation](static/text-background-image.html)
+Masks text over an image of the ocean and has some animated bubbles. I
+like websites with a video banner on their homepage, but feel like it
+is often more for show than functionality. I was interested in
+exploring how something like that could be incorporated into other
+parts of a website.

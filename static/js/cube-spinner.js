@@ -1,3 +1,5 @@
+// (1, 1), (-1, 1), (-1, -1), (1, -1)
+
 function main() {
     // Set up a renderer attached to our canvas.
     const canvas = document.querySelector("#c");
