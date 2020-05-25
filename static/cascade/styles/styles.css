@@ -32,8 +32,8 @@ h2 {
     margin: auto;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
-    max-width: 980px;
+    justify-content: center;
+    max-width: 70%;
 }
 
 .item {
@@ -52,7 +52,7 @@ h2 {
     box-shadow: 0 18px 16px -15px rgba(0,0,0,0.3);
     border-radius: 10px;
     
-    animation: 1s ease-out 0s 1 wiggleOnLoad;
+    animation: 1s ease-out 0.5s 1 wiggleOnLoad;
 }
 
 .item:hover {
