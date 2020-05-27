@@ -23,16 +23,15 @@ main {
     position: relative;
 }
 
-h1 {
-    font-size: 10rem;
-}
-
 @supports (-webkit-text-stroke: 2px black) {
   #header {
     -webkit-text-stroke: 2px black;
   }
 }
 
+h1 {
+    font-size: 10rem;
+}
 .bubbles {
     position: absolute;
     top: 0;

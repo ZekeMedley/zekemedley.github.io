@@ -22,3 +22,9 @@ like websites with a video banner on their homepage, but feel like it
 is often more for show than functionality. I was interested in
 exploring how something like that could be incorporated into other
 parts of a website.
+### 🎨 [Personal Store Page](static/keyah/keyah.html)
+Mockup of a store page for a friend of mine named Keyah who'd like to
+sell some of her art. I also made a mockup of a new Cascade Organic
+website in a similar style [here](static/cascade/index.html). More to come on
+that front.
+
