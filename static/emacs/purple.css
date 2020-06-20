@@ -23,7 +23,6 @@ h2 {
 }
 
 pre {
-    white-space: pre-wrap;       /* css-3 */
     font-size: 12pt;
     background: #222222;
     border-radius: 5px;
@@ -34,6 +33,8 @@ pre {
         0 0 25px #fff,            /* outer white */
         -10px 0 40px #f0f,        /* outer left magenta */
         10px 0 40px #0ff;         /* outer right cyan */
+    white-space: pre;
+    overflow: auto;
 }
 
 header {
