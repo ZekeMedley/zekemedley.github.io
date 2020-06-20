@@ -7,6 +7,7 @@ header = '''
 <html lang="en">
 <head>
 <meta charset='UTF-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zeke Medley</title>
 <link rel="stylesheet" href="styles/type.css"></link>
 <link rel="stylesheet" href="styles/position.css"></link>
