@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>three.js-2</title>
+        <style>
+            body { margin: 0; }
+            canvas { display: block; }
+        </style>
+    </head>
+    <body>
+        <canvas id="c"></canvas>
+        <script src="js/three.js"></script>
+        <script>
+            function make_renderer(renderer, cubes, scene, camera) {
+                function render(time) {
+                    time = time * 0.001; // Convert time to seconds.
+                    
+                    cubes.forEach((cube, ndx) => {
+                        const speed = 1 + ndx * .1;
+                        const rot = time * speed;
+                        cube.rotation.x = rot;
+                        cube.rotation.y = rot;
+                    });
+
+                    renderer.render(scene, camera);
+                    requestAnimationFrame(render);
+                }
+                return render;
+            }
+            function makeInstance(geometry, color, x, scene) {
+                const material = new THREE.MeshPhongMaterial({color});
+
+                const cube = new THREE.Mesh(geometry, material);
+                scene.add(cube);
+
+                cube.position.x = x;
+
+                return cube;
+            }
+            function main() {
+                // Attach the renderer to our canvas.
+                const canvas = document.querySelector("#c");
+                const renderer = new THREE.WebGLRenderer({canvas});
+                
+                // Set up the camera.
+                const fov = 75;
+                // This matches the default size of a canvas element. See
+                // three.html for an example of setting this to match the
+                // window size.
+                const aspect = 2;
+                // Near and far cutoff distance. Like render distance in
+                // Minecraft.
+                const near = 0.1;
+                const far = 5;
+                
+                const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+                camera.position.z = 2;
+                
+                const scene = new THREE.Scene();
+                
+                // Clever trick from tutorial. Make a scope here where we
+                // create the light then add it to the scene. Once its
+                // added its no longer needed so the light gets cleaned up.
+                {
+                    const color = 0xFFFFFF;
+                    const intensity = 1;
+                    const light = new THREE.DirectionalLight(color, intensity);
+                    // Lights are positioned at the origin pointing
+                    // towards the origin by default, all we need to do is
+                    // change the position as the cube will be at the origin.
+                    light.position.set(-1, 2, 4);
+                    scene.add(light);
+                }
+                
+                const boxWidth = 1;
+                const boxHeight = boxWidth;
+                const boxDepth = boxWidth;
+                const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
+                
+                // MeshBasicMaterial doesn't support lights so we use a
+                // Phong material.
+                const material = new THREE.MeshPhongMaterial({color: 0x44aa88});
+
+                const cubes = [
+                    makeInstance(geometry, 0x44aa88,  0, scene),
+                    makeInstance(geometry, 0x8844aa, -2, scene),
+                    makeInstance(geometry, 0xaa8844,  2, scene),
+                ];
+                
+                renderer.render(scene, camera);
+                
+                render = make_renderer(renderer, cubes, scene, camera);
+                requestAnimationFrame(render);
+            }
+            
+            main();
+        </script>
+    </body>
+</html>

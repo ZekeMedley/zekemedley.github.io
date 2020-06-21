@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Screen Reader Prefered</title>
+    <link rel="stylesheet" href="styles/hard-to-read.css">
+</head>
+<body>
+<nav>
+    <a href="../index.md.html" id="home">home</a>
+</nav>
+<div class="wrapper">
+<main>
+    <h1 id="writing-accessible-html">Writing Accessible HTML</h1>
+    <p>
+        Frankly, I’m no expert on making a website accessible. Rather than trying to say something worthwhile about something I know little about I’ll link to some articles that seem credible and then explain how I used their advice in making this website.
+    </p>
+    <h2 id="articles">Articles</h2>
+    <ul>
+        <li>
+            <a href="https://a11yproject.com/checklist/">Accessibility checklist</a> by The A11Y Project.
+        </li>
+        <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML">HTML: A good basis for accessibility</a> by Mozilla.
+        </li>
+        <li>
+            <a href="https://www.smashingmagazine.com/2018/12/voiceover-screen-reader-web-apps/">I Used The Web For A Day Using A Screen Reader</a> by Chris Ashton for Smashing Magazine.
+        </li>
+        </ul>
+        <p>
+            In addition to reading those articles I also did Apple’s Voice Over tutorial and tried to browse through my own website with it.
+        </p>
+        <h2 id="takeaways">Takeaways</h2>
+        <ul>
+        <li>
+            Add a <code>lang</code> attribute to your <code>&lt;html&gt;</code> tag. For example: <code>&lt;html   lang="en"&gt;</code> for an English website. This ensures that a screen reader will read a website with the correct accent.
+        </li>
+        <li>
+            Make the <code>&lt;title&gt;</code> attribute descriptive. This is the first thing that Voice Over will read when you visit a page. I imagine that other screen readers are similar.
+        </li>
+        <li>
+            Use tags like <code>&lt;main&gt;</code> and <code>&lt;nav&gt;</code> to separate sections of your webpages.
+        </li>
+        <li>
+            Use empty alt text on images that are purely decorative so that the screen reader doesn’t attempt to read them.
+        </li>
+    </ul>
+</main>
+</div>
+</body>
+</html>
+    
