@@ -1,3 +1,5 @@
+![Buld & Push HTML](https://github.com/ZekeMedley/zekemedley.github.io/workflows/Buld%20&%20Push%20HTML/badge.svg)
+
 
 This is my personal website. As much as possible, it is generated from
 markdown files. This is because I am too lazy to write things in HTML
