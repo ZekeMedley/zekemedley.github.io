@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-132344710-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-132344710-2');
+</script>
+<meta charset='UTF-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zeke Medley</title>
+<link rel="stylesheet" href="styles/type.css"></link>
+<link rel="stylesheet" href="styles/position.css"></link>
+<link href="styles/prism.css" rel="stylesheet" />
+<!-- Favicon is GitHub profile image. -->
+<link rel="icon" href="https://avatars1.githubusercontent.com/u/30676292?s=180&v=4">
+</head>
+<body>
+<div class="wrapper">
+    <nav>
+      <a href="index.md.html"><img src="media/logo.gif" alt="ZM Logo"></a>
+      <ul>
+          <li><a href="writing.md.html">Writing</a></li>
+          <li><a href="work.md.html">Work</a></li>
+      </ul>
+    </nav>
+<section id="main">
+<h1>Discrete Time Periodicity</h1>
+<h3>Mar 2020</h3>
+<p>We say that a function is periodic if, for some <code>p</code>, <code>f(x) = f(x + p)</code>
+for all <code>x</code>. This is all pretty familiar. If you've ever taken a
+geometry class before, you've probably encountered quite a few trig
+functions who are periodic. Here, for example, is our dear friend
+<code>sin(x)</code> plotted in continuous time from 0 to 6π.</p>
+<p><img class="med-img" src="media/sin_x_ct.svg" alt="sin of x from zero to 6π" /></p>
+<p>Both a visual and mathematical examination of this function will
+reveal that it is periodic. We learn this pretty early along in our
+math careers and a simple google search will tell you that its period
+is <code>2π</code>.</p>
+<p>More generally, the condition for this function to be periodic is that
+there exists a positive <code>p</code> for which <code>sin(wx) = sin(w(x+p)) = sin(wx + wp)</code>. Because we know that the underlying <code>sin</code> function here
+is periodic, this requirement holds if <code>wp = 2πk</code> for some <code>k</code>.</p>
+<p>In our continuous time case, we know exactly how to solve this
+one. Dividing by <code>w</code>, we find the period to be <code>2πk/w</code>.</p>
+<p>What about the discrete time case though? Much to my surprise
+recently, it actually turns out that <code>sin(wx)</code> is only periodic under
+rather draconian conditions in discrete time. Consider our signal
+above, but this time its discretized version.</p>
+<p><img class="med-img" src="media/sin_x_dt.svg" alt="sin of x from zero to 6π" /></p>
+<p>Things still look fairly periodic, but something isn't quite
+right. The wave looks like its repeating, but our samples on each hump
+aren't quite the same. Is our wave still periodic?</p>
+<p>Well, lets return to our earlier definition of periodicity. We know
+that this wave will be periodic with period <code>p</code> if <code>sin(wn) = sin(w(n+p)) = sin(wn + wp)</code> (I've switched to using <code>n</code> here as our
+variable as we're now in discrete time). Working this out, we arrive
+at a familiar formula: <code>p = 2πk/w</code>, but in our <code>sin(n)</code> function
+<code>w = 1</code>!</p>
+<p>Something is different, our period is now an irrational number. In
+continuous time this wasn't a problem because we can represent
+irrational numbers the same way that we would anything else, but in
+discrete time where <code>x</code> can only take on integer values there is no
+way to represent an irrational <code>x</code> value. This means that in discrete
+time you can only have integer periods.</p>
+<p>Another way to think about this is that even if the signal is
+periodic, if this period never lands on one of our discrete time
+samples, then it is no longer periodic in discrete time. In our
+example the <code>sin(wx)</code> is periodic with period <code>2πk/w</code> in continuous
+time but because there is no integer <code>k</code> such that<code>2πk</code> is also an
+integer, in discrete time this function is no longer periodic.</p>
+<p>I thought this was quite interesting.</p>
+
+</section>
+</div>
+<script src="js/prism.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

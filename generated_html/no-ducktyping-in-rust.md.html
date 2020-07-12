@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-132344710-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-132344710-2');
+</script>
+<meta charset='UTF-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zeke Medley</title>
+<link rel="stylesheet" href="styles/type.css"></link>
+<link rel="stylesheet" href="styles/position.css"></link>
+<link href="styles/prism.css" rel="stylesheet" />
+<!-- Favicon is GitHub profile image. -->
+<link rel="icon" href="https://avatars1.githubusercontent.com/u/30676292?s=180&v=4">
+</head>
+<body>
+<div class="wrapper">
+    <nav>
+      <a href="index.md.html"><img src="media/logo.gif" alt="ZM Logo"></a>
+      <ul>
+          <li><a href="writing.md.html">Writing</a></li>
+          <li><a href="work.md.html">Work</a></li>
+      </ul>
+    </nav>
+<section id="main">
+<h1>No Duck Typing In Rust</h1>
+<h3>July 2020</h3>
+<h2>Duck Typing</h2>
+<p>From Wikipedia, <a href="https://en.wikipedia.org/wiki/Duck_typing">duck typing</a> is</p>
+<blockquote>
+<p>an application of the duck test— &quot;If it walks like a duck and it
+quacks like a duck, then it must be a duck&quot;— to determine if an
+object can be used for a particular purpose. With normal typing,
+suitability is determined by an object's type. In duck typing, an
+object's suitability is determined by the presence of certain
+methods and properties, rather than the type of the object itself.</p>
+</blockquote>
+<p>Languages like Python use duck typing. A function like that adds two
+objects will work on anything that can do addition. For example:</p>
+<pre><code class="language-python">&gt;&gt;&gt; def add(a, b):
+...     return a + b
+... 
+&gt;&gt;&gt; add(1, 1)
+2
+&gt;&gt;&gt; add(&quot;foo&quot;, &quot;bar&quot;)
+&#x27;foobar&#x27;
+</code></pre>
+<p>This shouldn't come as a terrible surprise to anyone who has written
+much Python before. Other languages also employ duck typing. C++
+templates, for example, also use it. What's interesting though is that
+Rust does not.</p>
+<p>In order to show an example of this, lets take a look at a function
+called <code>element_wise_weighted_sum</code>. This function takes two containers
+and their weights as arguments. Then, it returns a new container that
+is the result of multiplying each container by its weight and adding
+them together. In linear algebra terms, this might look something like
+this, assuming that <code>a</code> and <code>b</code> are scalars and <code>C</code> and <code>D</code> are
+vectors:</p>
+<pre><code>a*C + b*D
+</code></pre>
+<h2>C++ &amp; Rust</h2>
+<p>Lets take a stab at writing this function in C++ and Rust. Along the
+way we'll see how Rust's decision to not allow duck typing changes how
+the function is written. Here's the C++ version:</p>
+<pre><code class="language-cpp">template&lt;class T, class Container&gt;
+std::vector&lt;T&gt; element_wise_weighted_sum(Container&amp; lhs, Container&amp; rhs, T lhw, T rhw) {
+  std::vector&lt;T&gt; result(lhs.size());
+  for (size_t i = 0; i &lt; lhs.size(); ++i) {
+    result[i] = lhs[i] * lhw + rhs[i] * rhw;
+  }
+  return result;
+}
+</code></pre>
+<p>It's pretty straightforward. Our function is generic over two types, a
+container and an element type. The weighted sum is just a small for
+loop.</p>
+<p>Notice that there are couple things we don't have to tell the type
+system. We don't have to tell it that Container will always hold type
+<code>T</code>, we don't have to tell it <code>T</code> will implement <code>+</code> and <code>*</code>, we don't
+have to tell it that <code>Container</code> will be iteratable, we don't have to
+tell it <code>Container</code> will have a <code>size()</code> method, we don't have to tell
+it that <code>T</code> is copyable, and we don't have to tell it that
+<code>Container</code> will be indexable. C++ just figures that out. If we try to
+use types that don't satisfy those implicit constraints, our compiler
+will give us an error telling us that.</p>
+<p>Rust though is a slightly different story. Here's an equivalent Rust
+function.</p>
+<pre><code class="language-rust">fn element_wise_weighted_sum&lt;T&gt;(
+    lhs: &amp;[T],
+    rhs: &amp;[T],
+    lhw: T,
+    rhw: T,
+) -&gt; Result&lt;Vec&lt;T&gt;, &amp;&#x27;static str&gt;
+where
+    T: std::ops::Add&lt;Output = T&gt; + std::ops::Mul&lt;Output = T&gt; + Copy,
+{
+    if lhs.len() != rhs.len() {
+        return Err(&quot;can&#x27;t multiply arrays of differnt lengths&quot;);
+    }
+    Ok(lhs
+        .iter()
+        .zip(rhs)
+        .map(|(&amp;lhs, &amp;rhs)| lhs * lhw + rhs * rhw)
+        .collect())
+}
+</code></pre>
+<p>Rust is a different story. In this function we've had to be explicit
+about all the things that were implied in C++.</p>
+<ul>
+<li>Container holds type <code>T</code> → <code>lhs: &amp;[T]</code></li>
+<li><code>T</code> will implement <code>+</code> and <code>-</code> → <code>T: std::ops::Add&lt;Output = T&gt; + std::ops::Mul&lt;Output = T&gt;</code></li>
+<li>Container will be iterable → container is a slice.</li>
+<li><code>T</code> is copyable - <code>T: Copy</code></li>
+</ul>
+<h2>My Take</h2>
+<p>Rust is forcing us to be explicit about the assumptions we're making
+about our code. In this case, I'd say that's a good thing. I'll give
+an example though of that being painful from my work on
+<a href="https://servo.org/">Servo</a>.</p>
+<p>In CSS there are specified values and there are computed
+ones. Specified values are ones that you write in your
+style sheets. For example, <code>color: black</code>. Computed values are ones
+that the browser uses when it actually paints the website. For example,
+<code>color: black</code> becomes <code>color: rgb(0, 0, 0)</code>. You can see computed
+values in your web inspector. Here they are in Firefox:</p>
+<p><img class="med-img" src="media/computed_values.jpg" alt="CSS computed values in Firefox" /></p>
+<p>In Firefox, every CSS value has a computed and a specified type so
+when possible we try and make our operations on them as generic as
+possible. This can get cumbersome though if you need to do a group of
+reasonably complex operations on those types.</p>
+<p>My specific example is working with a generic percentage type. Say we
+want to do the following things with it:</p>
+<ul>
+<li>add assign → <code>+=</code></li>
+<li>add → <code>+</code></li>
+<li>subtract assign → <code>-=</code></li>
+<li>subtract → <code>-</code></li>
+<li>... (multiply, divide)</li>
+</ul>
+<p>To get that to work in Rust, you need an insanely long where clause.</p>
+<pre><code class="language-rust">where
+	Percentage: Add&lt;Output = Percentage&gt; + AddAssign // + ...
+</code></pre>
+<p>In C++ it would <em>just work</em>.</p>
+
+</section>
+</div>
+<script src="js/prism.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

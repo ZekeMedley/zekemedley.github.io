@@ -2,8 +2,10 @@ body
 {
     margin: 0% 0%;
     width: 100%;
-    background-color: #fffdf5;
     justify-content: center;
+
+    color: #222222;
+    background-color: #eeeeee;
 }
 
 .wrapper

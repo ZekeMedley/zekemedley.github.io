@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-132344710-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-132344710-2');
+</script>
+<meta charset='UTF-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zeke Medley</title>
+<link rel="stylesheet" href="styles/type.css"></link>
+<link rel="stylesheet" href="styles/position.css"></link>
+<link href="styles/prism.css" rel="stylesheet" />
+<!-- Favicon is GitHub profile image. -->
+<link rel="icon" href="https://avatars1.githubusercontent.com/u/30676292?s=180&v=4">
+</head>
+<body>
+<div class="wrapper">
+    <nav>
+      <a href="index.md.html"><img src="media/logo.gif" alt="ZM Logo"></a>
+      <ul>
+          <li><a href="writing.md.html">Writing</a></li>
+          <li><a href="work.md.html">Work</a></li>
+      </ul>
+    </nav>
+<section id="main">
+<h1>Notes On Zeek's Closures</h1>
+<h3>April 2020</h3>
+<p>At the moment Zeeks' closures are rather error prone. I'm sure there
+are more undocumented ones, but here are their reported issues on
+GitHub as of April 16 2020:</p>
+<ul>
+<li><a href="https://github.com/zeek/zeek/issues/734">Closures are not properly maintained across event handlers.</a></li>
+<li><a href="https://github.com/zeek/zeek/issues/886">Unexpected lambda behavior after escaping original scope.</a></li>
+</ul>
+<p>Both of these issues stem from trouble managing the closure frame of
+lambdas. For example, the first issue above stems from the fact that
+Zeek doesn't create new call frames for each handler of an event and
+instead reuses call frames. Between calls of an event the frame is
+reset and values in a lambdas closure are removed.</p>
+<p>This is in spite of the fact that the machinery for managing
+closures is already quite complex. To list a few such things:</p>
+<ul>
+<li>Lambdas have complex logic for finding non-local variables that they
+will need in their closure at parse time that handles non-local
+variables in nested lambdas.</li>
+<li>Lambdas take care to only clone items in their closures that they're
+using when being cloned.</li>
+<li>Lambdas take care that they only store a weak reference to
+themselves in their closure frame to prevent cyclic references.</li>
+</ul>
+<p>The result of all this is that lambdas are difficult to reason about
+and error prone. This is also largely my fault as I was the original
+implementer of closures in Zeek. At the time I didn't grasp the
+complexities of Zeek, but now with ~6 months of closures being out in
+the wild I have some thoughts about how to resolve these problems.</p>
+<h2>1. Bandaids</h2>
+<p>One approach would be to try and move through these issues and add
+patchwork until they're solved. For example, we could add special
+logic so that when a frame gets reset the lambda will move values in
+that frame that it cares about into a special list. Then, whenever a
+lookup occurs in a frame the frame could first check if the value
+being looked up is in that list and then continue with the regular
+lookup. Yuck.</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>If there are really only those two issues with lambdas, then adding
+bandaids and calling it a day has the potential to be a lot less
+work than chainging how closures are designed.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>If there are more issues like the frame reset one, this has the
+potential to get pretty hairy.</li>
+<li>The Frame class needs to be very fast. A serious limiting factor in
+the performance of any programming language is variable lookups and
+adding more branches to a variabe lookup is bound to slow down a
+language.</li>
+<li>The logic around lambdas with closures is already incredibly complex
+and hairy. Adding more things in there risks making it completely
+incomprehensible.</li>
+</ul>
+<h2>2. Redesign</h2>
+<p>Another approach is to take a stab at changing how closures are
+managed in Zeek. Perhaps the current issue is design and not
+implementation.</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>A good implementation might do wonders for us.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Possibly more work.</li>
+</ul>
+<p>I detail a potential design in a different post that will be linked
+here once I've put it together.</p>
+<hr />
+<h3><a href="https://github.com/lua/lua/blob/9b7987a9d1471ba94764286b28e0998f73deb46a/lobject.h#L605-L616">Lua Upvalue Struct</a></h3>
+<pre><code class="language-c">typedef struct UpVal {
+  CommonHeader;
+  lu_byte tbc;  /* true if it represents a to-be-closed variable */
+  TValue *v;  /* points to stack or to its own value */
+  union {
+    struct {  /* (when open) */
+      struct UpVal *next;  /* linked list */
+      struct UpVal **previous;
+    } open;
+    TValue value;  /* the value (when closed) */
+  } u;
+} UpVal;
+</code></pre>
+
+</section>
+</div>
+<script src="js/prism.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
