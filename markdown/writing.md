@@ -10,3 +10,4 @@ and put them together mostly because I enjoy the process.
 ### 🌐 [Little Webpages I've Put Together](webpages.md.html)
 ### 🚀 [My Beautiful Emacs](static/emacs/purple.html)
 ### 🚗 [Thoughts On Firefox and Zeek performance](fandzperf.md.html)
+### 🐤 [No Duck Typing In Rust](no-ducktyping-in-rust.md.html)
